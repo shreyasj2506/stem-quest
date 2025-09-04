@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Teacher Dashboard</h2>
+  <p>Algebra Quiz - Class 8</p>
+  <ul>
+    <li>Asha: 90%</li>
+    <li>Ravi: 65%</li>
+  </ul>
+  <button onclick="exportCSV()">📊 Export CSV</button>
+
+  <script>
+    function exportCSV(){
+      const rows = [["Student","Score"],["Asha","90%"],["Ravi","65%"]];
+      const csv = rows.map(r => r.join(",")).join("\n");
+      const blob = new Blob([csv], {type:"text/csv"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "report.csv";
+      a.click();
+    }
+  </script>
+</body>
+</html>
